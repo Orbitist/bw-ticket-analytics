@@ -24,7 +24,7 @@ function getTickets() {
       timeTotal = timeTotal + minutes;
     }
     var timeHours = Number((timeTotal / 60).toFixed(2));
-    $( "#total-hours" ).append("<h1>" + timeHours + " Hours in the last month for member " + member + "</h1>");
+    $( "#total-hours" ).append("<p class='lead'><strong>" + timeHours + "</strong> Hours supporting " + member + " this month.</p>");
   });
 };
 
