@@ -1,3 +1,26 @@
+var d = new Date();
+var month = new Array();
+month[0] = "January";
+month[1] = "February";
+month[2] = "March";
+month[3] = "April";
+month[4] = "May";
+month[5] = "June";
+month[6] = "July";
+month[7] = "August";
+month[8] = "September";
+month[9] = "October";
+month[10] = "November";
+month[11] = "December";
+
+var thisMonth = month[d.getMonth()];
+var lastMonth = month[d.getMonth() - 1];
+var monthBeforeLastMonth = month[d.getMonth() - 2];
+
+console.log(thisMonth);
+console.log(lastMonth);
+console.log(monthBeforeLastMonth);
+
 // Get member from the URL query string
 function getUrlVars()
 {
@@ -19,11 +42,30 @@ function getTickets() {
   $.getJSON(ticketsAPI)
   .done(function( data ) {
     var timeTotal = 0;
+    var thisMonthsTime = 0;
+    var lastMonthsTime = 0;
+    var monthBeforeLastMonthsTime = 0;
     for (i = 0; i < data.length; i++) {
-      var hours = parseInt(data[i].field_billable_hours, 10);
-      timeTotal = timeTotal + hours;
+      var monthCreated = parseInt(data[i].created, 10);
+      var monthCreatedInt = monthCreated - 1;
+      if (monthCreatedInt = d.getMonth()) {
+        var hours = parseInt(data[i].field_billable_hours, 10);
+        timeTotal = timeTotal + hours;
+        thisMonthsTime = thisMonthsTime + hours;
+      }
+      if (monthCreatedInt = d.getMonth() - 1) {
+        var hours = parseInt(data[i].field_billable_hours, 10);
+        timeTotal = timeTotal + hours;
+        lastMonthsTime = lastMonthsTime + hours;
+      }
+      if (monthCreatedInt = d.getMonth() - 2) {
+        var hours = parseInt(data[i].field_billable_hours, 10);
+        timeTotal = timeTotal + hours;
+        monthBeforeLastMonthsTime = monthBeforeLastMonthsTime + hours;
+      }
     }
-    $( "#total-hours" ).append("<p class='lead'>We've spent <strong>" + timeTotal + "</strong> hours supporting <strong>" + data.length + "</strong> tickets for <strong>" + member + "</strong> this month!</p>");
+    $( "#total-hours" ).append("<p class='lead'>We've spent <strong>" + timeTotal + "</strong> billable hours supporting <strong>" + data.length + "</strong> tickets for <strong>" + member + "</strong> this month!</p>");
+    $( "#total-hours" ).append("<h1>" + thisMonth + thisMonthsTime + lastMonth + lastMonthsTime + monthBeforeLastMonth + monthBeforeLastMonthsTime + "</h1>");
   });
 };
 
