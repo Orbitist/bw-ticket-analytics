@@ -60,8 +60,12 @@ function getTickets() {
         monthBeforeLastMonthsTime = monthBeforeLastMonthsTime + hours;
       }
     }
+
+    var movingAverage = (thisMonthsTime + lastMonthsTime + monthBeforeLastMonthsTime)/3;
+
     $( "#total-hours" ).append("<p class='lead'>We've spent <strong>" + timeTotal + "</strong> billable hours supporting <strong>" + data.length + "</strong> tickets for <strong>" + member);
     $( "#total-hours" ).append("<h1>" + monthBeforeLastMonth + ": " + monthBeforeLastMonthsTime + " billable hours<br>" + lastMonth + ": " + lastMonthsTime + " billable hours<br>" + thisMonth + ": " + thisMonthsTime + " billable hours</h1>");
+    $( "#total-hours" ).append("<h1>3-month average: " + movingAverage + " billable hours</h1>");
   });
 };
 
