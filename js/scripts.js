@@ -20,11 +20,10 @@ function getTickets() {
   .done(function( data ) {
     var timeTotal = 0;
     for (i = 0; i < data.length; i++) {
-      var minutes = parseInt(data[i].field_minutes);
+      var minutes = parseInt(data[i].field_billable_hours);
       timeTotal = timeTotal + minutes;
     }
-    var timeHours = Number((timeTotal / 60).toFixed(2));
-    $( "#total-hours" ).append("<p class='lead'>We've spent <strong>" + timeHours + "</strong> hours supporting <strong>" + data.length + "</strong> tickets for <strong>" + member + "</strong> this month!</p>");
+    $( "#total-hours" ).append("<p class='lead'>We've spent <strong>" + timeTotal + "</strong> hours supporting <strong>" + data.length + "</strong> tickets for <strong>" + member + "</strong> this month!</p>");
   });
 };
 
