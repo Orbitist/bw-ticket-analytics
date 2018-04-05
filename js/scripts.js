@@ -61,7 +61,7 @@ function getTickets() {
       }
     }
 
-    var movingAverage = (thisMonthsTime + lastMonthsTime + monthBeforeLastMonthsTime)/3;
+    var movingAverage = ((thisMonthsTime + lastMonthsTime + monthBeforeLastMonthsTime)/3).toFixed(2);
 
     $( "#total-hours" ).append("<p class='lead'>We've spent <strong>" + timeTotal + "</strong> billable hours supporting <strong>" + data.length + "</strong> tickets for <strong>" + member);
     $( "#total-hours" ).append("<h1>" + monthBeforeLastMonth + ": " + monthBeforeLastMonthsTime + " billable hours<br>" + lastMonth + ": " + lastMonthsTime + " billable hours<br>" + thisMonth + ": " + thisMonthsTime + " billable hours</h1>");
