@@ -48,17 +48,17 @@ function getTickets() {
     for (i = 0; i < data.length; i++) {
       var monthCreated = parseInt(data[i].created, 10);
       var monthCreatedInt = monthCreated - 1;
-      if (monthCreatedInt = d.getMonth()) {
+      if (monthCreatedInt == d.getMonth()) {
         var hours = parseInt(data[i].field_billable_hours, 10);
         timeTotal = timeTotal + hours;
         thisMonthsTime = thisMonthsTime + hours;
       }
-      if (monthCreatedInt = d.getMonth() - 1) {
+      if (monthCreatedInt == d.getMonth() - 1) {
         var hours = parseInt(data[i].field_billable_hours, 10);
         timeTotal = timeTotal + hours;
         lastMonthsTime = lastMonthsTime + hours;
       }
-      if (monthCreatedInt = d.getMonth() - 2) {
+      if (monthCreatedInt == d.getMonth() - 2) {
         var hours = parseInt(data[i].field_billable_hours, 10);
         timeTotal = timeTotal + hours;
         monthBeforeLastMonthsTime = monthBeforeLastMonthsTime + hours;
