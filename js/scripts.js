@@ -20,7 +20,7 @@ function getTickets() {
   .done(function( data ) {
     var timeTotal = 0;
     for (i = 0; i < data.length; i++) {
-      var hours = Number(data[i].field_billable_hours);
+      var hours = parseInt(data[i].field_billable_hours, 10);
       timeTotal = timeTotal + hours;
     }
     $( "#total-hours" ).append("<p class='lead'>We've spent <strong>" + timeTotal + "</strong> hours supporting <strong>" + data.length + "</strong> tickets for <strong>" + member + "</strong> this month!</p>");
