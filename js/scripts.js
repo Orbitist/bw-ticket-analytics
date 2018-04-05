@@ -66,6 +66,7 @@ function getTickets() {
     $( "#total-hours" ).append("<p class='lead'>We've spent <strong>" + timeTotal + "</strong> billable hours supporting <strong>" + data.length + "</strong> tickets for <strong>" + member + "</strong> in the last three months.");
     $( "#total-hours" ).append("<h1>" + monthBeforeLastMonth + ": " + monthBeforeLastMonthsTime + " billable hours<br>" + lastMonth + ": " + lastMonthsTime + " billable hours<br>" + thisMonth + ": " + thisMonthsTime + " billable hours</h1>");
     $( "#total-hours" ).append("<h1>3-month average: " + movingAverage + " billable hours</h1>");
+    $( "#total-hours" ).append("<p>*** Note that tickets are accounted based on the month they were initiated. This means that actual billable hours performed per month may vary from this report. ***</p>");
   });
 };
 
