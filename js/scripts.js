@@ -17,10 +17,6 @@ var thisMonth = month[d.getMonth()];
 var lastMonth = month[d.getMonth() - 1];
 var monthBeforeLastMonth = month[d.getMonth() - 2];
 
-console.log(thisMonth);
-console.log(lastMonth);
-console.log(monthBeforeLastMonth);
-
 // Get member from the URL query string
 function getUrlVars()
 {
@@ -46,20 +42,20 @@ function getTickets() {
     var lastMonthsTime = 0;
     var monthBeforeLastMonthsTime = 0;
     for (i = 0; i < data.length; i++) {
-      var monthCreated = parseInt(data[i].created, 10);
+      var monthCreated = parseFloat(data[i].created);
       var monthCreatedInt = monthCreated - 1;
       if (monthCreatedInt == d.getMonth()) {
-        var hours = parseInt(data[i].field_billable_hours, 10);
+        var hours = parseFloat(data[i].field_billable_hours);
         timeTotal = timeTotal + hours;
         thisMonthsTime = thisMonthsTime + hours;
       }
       else if (monthCreatedInt == d.getMonth() - 1) {
-        var hours = parseInt(data[i].field_billable_hours, 10);
+        var hours = parseFloat(data[i].field_billable_hours);
         timeTotal = timeTotal + hours;
         lastMonthsTime = lastMonthsTime + hours;
       }
       else if (monthCreatedInt == d.getMonth() - 2) {
-        var hours = parseInt(data[i].field_billable_hours, 10);
+        var hours = parseFloat(data[i].field_billable_hours);
         timeTotal = timeTotal + hours;
         monthBeforeLastMonthsTime = monthBeforeLastMonthsTime + hours;
       }
