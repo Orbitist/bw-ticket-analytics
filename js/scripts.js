@@ -42,19 +42,19 @@ function getTickets() {
     var lastMonthsTime = 0;
     var monthBeforeLastMonthsTime = 0;
     for (i = 0; i < data.length; i++) {
-      var monthCreated = Number(data[i].created);
-      var monthCreatedInt = monthCreated - 1;
-      if (monthCreatedInt == d.getMonth()) {
+      var monthCompleted = Number(data[i].completed);
+      var monthCompletedInt = monthCompleted - 1;
+      if (monthCompletedInt == d.getMonth()) {
         var hours = Number(data[i].field_billable_hours);
         timeTotal = timeTotal + hours;
         thisMonthsTime = thisMonthsTime + hours;
       }
-      else if (monthCreatedInt == d.getMonth() - 1) {
+      else if (monthCompletedInt == d.getMonth() - 1) {
         var hours = Number(data[i].field_billable_hours);
         timeTotal = timeTotal + hours;
         lastMonthsTime = lastMonthsTime + hours;
       }
-      else if (monthCreatedInt == d.getMonth() - 2) {
+      else if (monthCompletedInt == d.getMonth() - 2) {
         var hours = Number(data[i].field_billable_hours);
         timeTotal = timeTotal + hours;
         monthBeforeLastMonthsTime = monthBeforeLastMonthsTime + hours;
@@ -66,7 +66,6 @@ function getTickets() {
     $( "#total-hours" ).append("<p class='lead'>We've spent <strong>" + timeTotal + "</strong> billable hours supporting <strong>" + data.length + "</strong> tickets for <strong>" + member + "</strong> in the last three months.");
     $( "#total-hours" ).append("<h1>" + monthBeforeLastMonth + ": " + monthBeforeLastMonthsTime + " billable hours<br>" + lastMonth + ": " + lastMonthsTime + " billable hours<br>" + thisMonth + ": " + thisMonthsTime + " billable hours</h1>");
     $( "#total-hours" ).append("<h1>3-month average: " + movingAverage + " billable hours</h1>");
-    $( "#total-hours" ).append("<p>*** Note that tickets are accounted for based on the month they are initiated. Tickets that take multiple months to complete may slightly skew this report. This is why we use a 3-month average as more accurate guidance of the amount of billable hours performed on a monthly basis. ***</p>");
   });
 };
 
