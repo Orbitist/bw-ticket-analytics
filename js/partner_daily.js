@@ -45,8 +45,9 @@ function getTickets() {
     var todayDate = new Date();
     for (i = 0; i < data.length; i++) {
       var date = Number(data[i].day);
+      var month = Number(data[i].month);
       var hours = Number(data[i].hours);
-      if (date == todayDate.getDate()) {
+      if (date == todayDate.getDate() && month == todayDate.getMonth()) {
         todayTime = todayTime + hours;
       }
     }
