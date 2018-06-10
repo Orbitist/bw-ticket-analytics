@@ -34,7 +34,7 @@ var member = getUrlVars()["member"];
 
 // Get tickets
 function getTickets() {
-  var ticketsAPI = "https://getbeyondwords.com/api/tickets/partner?member=" + member + "?_format=json";
+  var ticketsAPI = "https://getbeyondwords.com/api/tickets/partner?member=" + member + "&_format=json";
   $.getJSON(ticketsAPI)
   .done(function( data ) {
     var timeTotal = 0;
